@@ -1,0 +1,115 @@
+﻿
+
+@using Microsoft.AspNetCore.Http
+@model AddStudentViewModel
+
+@{
+    Layout = "_MainLayout";
+}
+
+
+<div class="shadow container rounded bg-white mt-5" style="width: 70vw;">
+        <div class="row">
+           <div class="col-md-6 border-right">
+            <form class="form" method="post" asp-controller="Student" asp-action="AddExisting">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="mt-5 alert alert-danger">
+                        <span>@TempData["Message"]</span>
+                    </div>
+                }
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <div class="row mt-2 form-group">
+                        <label class="col-lg-4" for="students">Select Student</label>
+                        <select id="students" name="studentId" asp-items="ViewBag.Students" class="form-control col-lg">
+                            <option value="0">Select Exixting Student</option>
+                        </select>
+                    </div>
+                    <input name="courseId" value="@ViewBag.CourseId" class="form-control" type="hidden"/>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add Exixting Student</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+            <form class="form" method="post" asp-controller="Student" asp-action="Add" asp-route-id="@ViewBag.CourseId">
+
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a asp-controller="Subject" asp-action="Details" asp-route-id="@ViewBag.CourseId" class="text-decoration-none">
+                            <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                <h6>Back to Subject Page</h6>
+                            </div>
+                        </a>
+                        <h6 class="text-right">Adding New Student</h6>
+                    </div>
+
+                    @if (TempData["Message2"] != null)
+                    {
+                        <div class="mt-5 alert alert-danger">
+                            <span>@TempData["Message2"]</span>
+                        </div>
+                    }
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="FName"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="FName" class="form-control"/>
+                            <span asp-validation-for="FName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="LName"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="LName" class="form-control"/>
+                            <span asp-validation-for="LName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="Email"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="Email" class="form-control"/>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="Password"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="Password" class="form-control"/>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="ConfirmPassword"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="ConfirmPassword" class="form-control"/>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        @*<input type="hidden" name="courseId" value="@ViewBag.CourseId" />*@
+                    </div>
+                    <div class="mt-5 text-right"><input type="submit" class="btn btn-success pr-5 pl-5 pt-2 pb-2" value="Add Student"></div>
+                </div>
+               </form>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

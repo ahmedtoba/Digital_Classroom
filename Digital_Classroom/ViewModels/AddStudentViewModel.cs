@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Digital_Classroom.ViewModels
 {
-    public class RegisterViewModel
+    public class AddStudentViewModel
     {
-        [Required(ErrorMessage ="Full name is rquired")]
-        [Display(Name ="Full Name")]
-        public string FullName { get; set; }
+        [Required(ErrorMessage ="First name is rquired")]
+        [Display(Name ="First Name")]
+        public string FName { get; set; }
+        [Required(ErrorMessage = "Last name is rquired")]
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
 
-        [Display(Name ="User Name")]
-        [Required(ErrorMessage ="User Name is required")]
-        public string UserName { get; set; }
         [Display(Name = "Email Address")]
         [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
@@ -22,6 +22,5 @@ namespace Digital_Classroom.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage ="Password does not match")]
         public string ConfirmPassword { get; set; }
-        public string Role { get; set; }
     }
 }

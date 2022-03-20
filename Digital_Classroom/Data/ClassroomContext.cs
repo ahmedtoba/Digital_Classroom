@@ -11,6 +11,8 @@ namespace Digital_Classroom.Data
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<Video> Videos { get; set; }
 
+        public virtual DbSet<StudentSubject> StudentSubjects { get; set; }
+
         public ClassroomContext(DbContextOptions options) : base(options)
         {
         }

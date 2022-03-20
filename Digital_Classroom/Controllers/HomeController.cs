@@ -1,4 +1,5 @@
 ﻿using Digital_Classroom.Models;
+using Digital_Classroom.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,18 @@ namespace Digital_Classroom.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISubjectRepository subjectRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISubjectRepository subjectRepository)
         {
             _logger = logger;
+            this.subjectRepository = subjectRepository;
         }
 
+        
         public IActionResult Index()
         {
-            return View();
+            return View(subjectRepository.GetAll());
         }
 
         public IActionResult Privacy()

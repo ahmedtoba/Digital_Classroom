@@ -1,5 +1,7 @@
 ﻿using Digital_Classroom.Models;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Digital_Classroom.Services
 {
@@ -8,7 +10,7 @@ namespace Digital_Classroom.Services
         List<Subject> GetAll();
         Subject GetById(int id);
         Subject GetByName(string name);
-        int Insert(Subject subject);
+        Task<int> Insert(Subject subject, IFormFile Image);
         int Update(Subject subject, int id);
         int Delete(int id);
     }

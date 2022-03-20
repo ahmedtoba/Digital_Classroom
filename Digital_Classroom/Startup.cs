@@ -1,5 +1,6 @@
 using Digital_Classroom.Data;
 using Digital_Classroom.Models;
+using Digital_Classroom.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,7 @@ namespace Digital_Classroom
             services.AddControllersWithViews();
 
             services.AddDbContext<ClassroomContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("LocalCS"))
+                options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("LocalCS"))
             );
 
 
@@ -43,6 +44,10 @@ namespace Digital_Classroom
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
 
+            //Repositories: 
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<IDocumentRepository, DocumentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

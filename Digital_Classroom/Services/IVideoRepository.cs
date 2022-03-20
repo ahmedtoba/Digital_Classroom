@@ -1,6 +1,7 @@
 ﻿using Digital_Classroom.Models;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Digital_Classroom.Services
 {
@@ -8,7 +9,7 @@ namespace Digital_Classroom.Services
     {
         List<Video> GetAll(int subjectId);
         Video GetById (int id);
-        int Insert(Video video);
+        Task<int> Insert(Video video, IFormFile content);
         int Delete(int id);
 
     }

@@ -11,7 +11,7 @@ namespace Digital_Classroom.Models
         public string Image { get; set; }
         public string Address { get; set; }
         public DateTime Birthdate { get; set; }
-        public List<Subject> SubjectsTeaching { get; set; }
-        public List<StudentSubject> SubjectsStudying { get; set; }
+        public virtual List<Subject> SubjectsTeaching { get; set; }
+        public virtual List<StudentSubject> SubjectsStudying { get; set; }
     }
 }

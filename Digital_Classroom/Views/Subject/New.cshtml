@@ -1,0 +1,66 @@
+﻿
+
+@using Microsoft.AspNetCore.Http
+@model Subject
+
+@{
+    Layout = "_MainLayout";
+}
+
+
+<form class="form" method="post" enctype="multipart/form-data" asp-controller="Subject" asp-action="New">
+<div class="shadow container rounded bg-white mt-5" style="width: 70vw;">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="mt-5" id="upimage" 
+                    src="~/img/@(Model.Image!=null ? Model.Image : "class_placeholder.png")" 
+                    style="width: 150px; height:150px; object-fit: cover; object-position: top; border-radius:50%">
+                    <input type="file" id="image" name="Image" class="d-none" onchange="document.getElementById('upimage').src = window.URL.createObjectURL(this.files[0])">
+                    <label for="image" class="btn btn-primary mt-3" style="cursor:pointer;">Upload Picture</label>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a asp-controller="Home" asp-action="Index" class="text-decoration-none">
+                            <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                <h6>Back to Home Page</h6>
+                            </div>
+                        </a>
+                        <h6 class="text-right">Adding New Subject</h6>
+                    </div>
+                    <div class="row mt-2 form-group">
+                    
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label asp-for="Name"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3 justify-content-center align-content-center">
+                        <div class="col-md-4">
+                            <label asp-for="Description"></label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                        </div>
+
+                    </div>
+                    
+                    <div class="mt-5 text-right"><input type="submit" class="btn btn-success pr-5 pl-5 pt-2 pb-2" value="Add Subject"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
