@@ -200,7 +200,7 @@ namespace Digital_Classroom.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentSubject",
+                name: "StudentSubjects",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -210,15 +210,15 @@ namespace Digital_Classroom.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentSubject", x => x.Id);
+                    table.PrimaryKey("PK_StudentSubjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentSubject_AspNetUsers_StudentId",
+                        name: "FK_StudentSubjects_AspNetUsers_StudentId",
                         column: x => x.StudentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_StudentSubject_Subjects_subjectId",
+                        name: "FK_StudentSubjects_Subjects_subjectId",
                         column: x => x.subjectId,
                         principalTable: "Subjects",
                         principalColumn: "Id",
@@ -292,13 +292,13 @@ namespace Digital_Classroom.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentSubject_StudentId",
-                table: "StudentSubject",
+                name: "IX_StudentSubjects_StudentId",
+                table: "StudentSubjects",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentSubject_subjectId",
-                table: "StudentSubject",
+                name: "IX_StudentSubjects_subjectId",
+                table: "StudentSubjects",
                 column: "subjectId");
 
             migrationBuilder.CreateIndex(
@@ -333,7 +333,7 @@ namespace Digital_Classroom.Migrations
                 name: "Documents");
 
             migrationBuilder.DropTable(
-                name: "StudentSubject");
+                name: "StudentSubjects");
 
             migrationBuilder.DropTable(
                 name: "Videos");
